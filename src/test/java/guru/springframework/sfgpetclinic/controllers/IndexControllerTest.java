@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.exception.ValueNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,9 @@ class IndexControllerTest {
     }
 
     @Test
-    void oupsHandler() {
-        assertTrue("notimplemented".equals(indexController.oupsHandler()), () -> "Lambda message for message");
+    void oopsHandler() {
+        assertThrows(ValueNotFoundException.class, () -> {
+            indexController.oopsHandler();
+        });
     }
 }
