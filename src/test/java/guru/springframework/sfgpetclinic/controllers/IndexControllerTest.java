@@ -1,10 +1,14 @@
 package guru.springframework.sfgpetclinic.controllers;
 
 import guru.springframework.sfgpetclinic.exception.ValueNotFoundException;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.api.condition.EnabledOnJre;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
+import org.junit.jupiter.api.condition.OS;
 
 import java.time.Duration;
 
@@ -28,9 +32,7 @@ class IndexControllerTest {
 
     @Test
     void oopsHandler() {
-        assertThrows(ValueNotFoundException.class, () -> {
-            indexController.oopsHandler();
-        });
+        assertThrows(ValueNotFoundException.class, () -> indexController.oopsHandler());
     }
 
     @Test
@@ -61,5 +63,29 @@ class IndexControllerTest {
     @Test
     void testAssumptionTrueSuccess() {
         assumeTrue("GURU".equalsIgnoreCase("GURU"));
+    }
+
+    @Test
+    @EnabledOnOs(OS.WINDOWS)
+    void testMeOnWindowns() {
+        System.out.println("M=testMeOnWindowns, I=executed");
+    }
+
+    @Test
+    @EnabledOnOs(OS.LINUX)
+    void testMeOnLinux() {
+        System.out.println("M=testMeOnLinux, I=executed");
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_8)
+    void testMeOnJava8() {
+        System.out.println("M=testMeOnJava8, I=executed");
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "USER", matches = "abc")
+    void testIfUserAbc() {
+        System.out.println("M=testMeOnUserABC, I=executed");
     }
 }
