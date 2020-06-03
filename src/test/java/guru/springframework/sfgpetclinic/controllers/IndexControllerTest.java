@@ -12,6 +12,7 @@ import org.junit.jupiter.api.condition.OS;
 
 import java.time.Duration;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
@@ -28,6 +29,9 @@ class IndexControllerTest {
     void index() {
         assertEquals("index", indexController.index());
         assertEquals("index", indexController.index(), "Wrong view returned");
+
+        assertThat(indexController.index()).contains("nde");
+        assertThat(indexController.index()).isEqualTo("index");
     }
 
     @Test
