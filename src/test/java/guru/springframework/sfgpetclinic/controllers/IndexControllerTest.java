@@ -1,9 +1,9 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.ControllerTests;
 import guru.springframework.sfgpetclinic.exception.ValueNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.condition.EnabledOnJre;
@@ -17,8 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-@Tag("controllers")
-class IndexControllerTest {
+class IndexControllerTest implements ControllerTests {
 
     IndexController indexController;
 
